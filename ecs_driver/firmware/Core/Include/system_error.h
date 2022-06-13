@@ -1,5 +1,5 @@
-#ifndef COPTER_PROJECT_LOW_LEVEL_ERROR_H
-#define COPTER_PROJECT_LOW_LEVEL_ERROR_H
+#ifndef COPTER_PROJECT_SYSTEM_ERROR_H
+#define COPTER_PROJECT_SYSTEM_ERROR_H
 
 #include "include.h"
 
@@ -17,4 +17,4 @@ void Error_Handler (void);
 void errorHandler (void);
 
 
-#endif /* _IT_H_ */
+#endif /* COPTER_PROJECT_SYSTEM_ERROR_H */

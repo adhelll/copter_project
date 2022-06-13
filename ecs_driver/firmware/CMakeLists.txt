@@ -3,9 +3,8 @@ cmake_minimum_required(VERSION 3.17)
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
 
-project(COPTER_PROJECT C ASM)
+project(ECS_DRIVER C ASM)
 
-set(CMAKE_CXX_STANDART 17)
 set(CMAKE_C_STANDART 11)
 
 # Укажим какие компиляторы линковщики и т.д. будем использовать для кросс-компиляции
@@ -54,7 +53,8 @@ add_definitions(
 
 file(GLOB_RECURSE SOURCES
         "Drivers/*.*"
-        "Core/*.*")
+        "Core/*.*"
+)
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F103C8Tx_FLASH.ld)
 
@@ -71,7 +71,9 @@ set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
 
 # Библиотеки
-target_link_libraries(${PROJECT_NAME}.elf m )
+target_link_libraries(${PROJECT_NAME}.elf
+        m
+)
 
 add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
         COMMAND ${CMAKE_OBJCOPY} -Oihex $<TARGET_FILE:${PROJECT_NAME}.elf> ${HEX_FILE}
